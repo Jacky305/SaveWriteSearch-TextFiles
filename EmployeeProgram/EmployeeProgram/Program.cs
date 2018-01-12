@@ -45,7 +45,14 @@ namespace EmployeeProgram
             else if (response == 2)
             {
                 FileStream inFile = new FileStream(FILENAME, FileMode.Open, FileAccess.Read);
+                Console.WriteLine("\n{0,-5}{1,-12}{2,8}\n", "Num", "Name", "Salary");
 
+                while(inFile.Position < inFile.Length)
+                {
+                    emp = (Employee)bFormatter.Deserialize(inFile);
+                    Console.WriteLine("{0,-5}{1,-12}{2,8}", emp.Num, emp.Name, emp.Salary.ToString("C"));
+                }
+                inFile.Close();
             }
             
         }
